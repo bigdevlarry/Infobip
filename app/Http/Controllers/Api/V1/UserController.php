@@ -4,11 +4,9 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Models\User;
 use App\Facade\AppUtils;
-// use App\Mail\VerifyEmail;
 use Illuminate\Http\Request;
 use App\Enums\StatusCodeEnum;
 use Tymon\JWTAuth\Facades\JWTAuth;
-// use App\Jobs\sendVerificationEmail;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use App\Repositories\User\UserRepository;
@@ -91,7 +89,6 @@ class UserController extends Controller
         $requestBody = [
             'id' => ['required'],
         ];
-
         return AppUtils::validation($request->all(), $requestBody);
     }
 }
