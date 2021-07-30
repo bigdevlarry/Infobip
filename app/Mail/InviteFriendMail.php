@@ -16,11 +16,12 @@ class InviteFriendMail extends Mailable
      *
      * @return void
      */
-    private $user;
+    private $user , $tournament;
 
-    public function __construct($user)
+    public function __construct($user, $tournament)
     {
         $this->user = $user;
+        $this->tournament = $tournament;
     }
 
     /**
@@ -35,7 +36,7 @@ class InviteFriendMail extends Mailable
                 ->with([
                         'subject' => 'Invite for a game',
                         'greeting' => 'Hello '. ucfirst($this->user['name']),
-                        'message' => 'You have just been invited to a game',
+                        'message' => 'You have just been invited to '. ucfirst($this->tournament['name']) . ' game',
                     ]);
     }
 }

@@ -45,14 +45,15 @@ class TournamentController extends Controller
     public function sendInvite (Request $request)
     {
         $requestBody = [
-            'username' => 'required|string|exists:users,username'
+            'username' => 'required|string|exists:users,username',
+            'id' => 'required|string|exists:tournaments,id'
         ];
 
         AppUtils::validation($request->all(), $requestBody);
 
         $request['current_user'] = $this->user->getAuthenticatedUser()['id'];
 
-        $user = $this->tournament->inviteFriend($request->username, $request['current_user']);
+        $user = $this->tournament->inviteFriend($request->all(), $request['current_user']);
 
         return AppUtils::setResponse(StatusCodeEnum::OK, null, "Invitation sent");
     }

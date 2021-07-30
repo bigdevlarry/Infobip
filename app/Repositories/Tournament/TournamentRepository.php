@@ -30,15 +30,20 @@ class TournamentRepository implements TournamentInterface
         return $this->tournament->firstOrCreate($request);
     }
 
-    public function inviteFriend (string $username, int $currentUser)
+    public function inviteFriend (array $request, int $currentUser)
     {
-        $user = $this->user->whereUsername($username)->first();
+
+        $user = $this->user->whereUsername($request['username'])->first();
+        $tournament = $this->tournament->find($request['id']);
+        if(!$user){
+           throw new CustomException(StatusCodeEnum::NOT_FOUND, null, 'User not found'); 
+        }
 
         if($currentUser == $user->id){
             throw new CustomException(StatusCodeEnum::BAD_REQUEST, null, 'You can\'t invite yourself to a game');
         }
 
-        Mail::to($user->email)->send(new InviteFriendMail($user));
+        Mail::to($user->email)->send(new InviteFriendMail($user, $tournament));
 
         return true;
     }

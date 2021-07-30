@@ -6,7 +6,7 @@ interface TournamentInterface
 {
     public function createTournament(array $request);
 
-    public function inviteFriend (string $username, int $currentUser);
+    public function inviteFriend (array $request, int $currentUser);
 
     public function submitResult (array $request);
 

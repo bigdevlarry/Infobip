@@ -641,7 +641,7 @@
                                                         <p>{{$message}}</p>
 
                                                         <p>	
-                                                        	Cheers, <br> Demo 
+                                                        	Cheers, <br> HappySocks
                                                         </p>
 
                                                     </div>
