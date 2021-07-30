@@ -830,7 +830,7 @@
 					}
 				},
 				"url": {
-					"raw": "{{happysocks}}/v1/invite-friend?username=damola",
+					"raw": "{{happysocks}}/v1/invite-friend?username=isaac&id=1",
 					"host": [
 						"{{happysocks}}"
 					],
@@ -841,7 +841,11 @@
 					"query": [
 						{
 							"key": "username",
-							"value": "damola"
+							"value": "isaac"
+						},
+						{
+							"key": "id",
+							"value": "1"
 						}
 					]
 				}
@@ -862,7 +866,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{happysocks}}/v1/invite-friend?username=damola",
+							"raw": "{{happysocks}}/v1/invite-friend?username=damola&id=1",
 							"host": [
 								"{{happysocks}}"
 							],
@@ -874,6 +878,10 @@
 								{
 									"key": "username",
 									"value": "damola"
+								},
+								{
+									"key": "id",
+									"value": "1"
 								}
 							]
 						}
