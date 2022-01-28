@@ -1,18 +1,27 @@
 {
 	"info": {
 		"_postman_id": "29c6d660-3a53-4d15-a5c1-b649c96bc380",
-		"name": "Happy Socks",
+		"name": "Infobip",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
 			"name": "Register User",
 			"request": {
+				"auth": {
+					"type": "noauth"
+				},
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "token",
+						"value": "{{infobip_token}}",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\": \"olanrewaju\",\n    \"email\": \"damola@gmail.com\",\n    \"username\": \"damola\",\n    \"password\": \"olanrewaju\",\n    \"password_confirmation\": \"olanrewaju\"\n}",
+					"raw": "{\n    \"name\": \"olanrewaju\",\n    \"email\": \"larry@gmail.com\",\n    \"username\": \"larry\",\n    \"password\": \"olanrewaju\",\n    \"password_confirmation\": \"olanrewaju\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -20,9 +29,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{happysocks}}/v1/register",
+					"raw": "{{infobip}}/v1/register",
 					"host": [
-						"{{happysocks}}"
+						"{{infobip}}"
 					],
 					"path": [
 						"v1",
@@ -47,9 +56,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{happysocks}}/v1/register",
+							"raw": "{{infobip}}/v1/register",
 							"host": [
-								"{{happysocks}}"
+								"{{infobip}}"
 							],
 							"path": [
 								"v1",
@@ -71,7 +80,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"email\" : \"larry@gmail.com\",\n    \"password\" : \"olanrewaju\"\n}",
+					"raw": "{\n    \"email\" : \"damola@gmail.com\",\n    \"password\" : \"olanrewaju\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -79,9 +88,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{happysocks}}/v1/login",
+					"raw": "{{infobip}}/v1/login",
 					"host": [
-						"{{happysocks}}"
+						"{{infobip}}"
 					],
 					"path": [
 						"v1",
@@ -106,9 +115,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{happysocks}}/v1/login",
+							"raw": "{{infobip}}/v1/login",
 							"host": [
-								"{{happysocks}}"
+								"{{infobip}}"
 							],
 							"path": [
 								"v1",
@@ -136,9 +145,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{happysocks}}/v1/login",
+							"raw": "{{infobip}}/v1/login",
 							"host": [
-								"{{happysocks}}"
+								"{{infobip}}"
 							],
 							"path": [
 								"v1",
@@ -150,158 +159,6 @@
 					"header": null,
 					"cookie": [],
 					"body": "{\n    \"status\": 400,\n    \"message\": \"Invalid credentials\"\n}"
-				}
-			]
-		},
-		{
-			"name": "View user",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{happyToken}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{happysocks}}/v1/view-user?id=1",
-					"host": [
-						"{{happysocks}}"
-					],
-					"path": [
-						"v1",
-						"view-user"
-					],
-					"query": [
-						{
-							"key": "id",
-							"value": "1"
-						}
-					]
-				},
-				"description": "View registered user"
-			},
-			"response": [
-				{
-					"name": "View user Success",
-					"originalRequest": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{happysocks}}/v1/view-user?id=1",
-							"host": [
-								"{{happysocks}}"
-							],
-							"path": [
-								"v1",
-								"view-user"
-							],
-							"query": [
-								{
-									"key": "id",
-									"value": "1"
-								}
-							]
-						}
-					},
-					"_postman_previewlanguage": "json",
-					"header": null,
-					"cookie": [],
-					"body": "{\n    \"status\": 200,\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"olanrewaju\",\n        \"email\": \"larry@gmail.com\",\n        \"username\": \"larry\",\n        \"email_verified_at\": null,\n        \"avatar\": null,\n        \"created_at\": \"2021-07-01T15:30:18.000000Z\",\n        \"updated_at\": \"2021-07-01T15:30:18.000000Z\",\n        \"deleted_at\": null\n    },\n    \"message\": \"Success\"\n}"
-				},
-				{
-					"name": "View user Not found",
-					"originalRequest": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{happysocks}}/v1/view-user?id=1",
-							"host": [
-								"{{happysocks}}"
-							],
-							"path": [
-								"v1",
-								"view-user"
-							],
-							"query": [
-								{
-									"key": "id",
-									"value": "1"
-								}
-							]
-						}
-					},
-					"_postman_previewlanguage": "json",
-					"header": null,
-					"cookie": [],
-					"body": "{\n    \"status\": 404,\n    \"message\": \"User not found\"\n}"
-				}
-			]
-		},
-		{
-			"name": "Deactivate user",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{happyToken}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [],
-				"url": {
-					"raw": "{{happysocks}}/v1/deactivate-user?id=1",
-					"host": [
-						"{{happysocks}}"
-					],
-					"path": [
-						"v1",
-						"deactivate-user"
-					],
-					"query": [
-						{
-							"key": "id",
-							"value": "1"
-						}
-					]
-				}
-			},
-			"response": [
-				{
-					"name": "Deactivate user success",
-					"originalRequest": {
-						"method": "POST",
-						"header": [],
-						"url": {
-							"raw": "{{happysocks}}/v1/deactivate-user?id=1",
-							"host": [
-								"{{happysocks}}"
-							],
-							"path": [
-								"v1",
-								"deactivate-user"
-							],
-							"query": [
-								{
-									"key": "id",
-									"value": "1"
-								}
-							]
-						}
-					},
-					"_postman_previewlanguage": "json",
-					"header": null,
-					"cookie": [],
-					"body": "{\n    \"status\": 200,\n    \"message\": \"User deactivated\"\n}"
 				}
 			]
 		},
@@ -322,7 +179,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"email\" : \"larry@gmail.com\",\n    \"password\": \"olanrewaju\",\n    \"password_confirmation\": \"olanrewaju\"\n}",
+					"raw": "{\n    \"email\" : \"damola@gmail.com\",\n    \"password\": \"olanrewaju\",\n    \"password_confirmation\": \"olanrewaju\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -330,9 +187,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{happysocks}}/v1/reset-password",
+					"raw": "{{infobip}}/v1/reset-password",
 					"host": [
-						"{{happysocks}}"
+						"{{infobip}}"
 					],
 					"path": [
 						"v1",
@@ -356,9 +213,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{happysocks}}/v1/reset-password",
+							"raw": "{{infobip}}/v1/reset-password",
 							"host": [
-								"{{happysocks}}"
+								"{{infobip}}"
 							],
 							"path": [
 								"v1",
@@ -425,6 +282,145 @@
 			]
 		},
 		{
+			"name": "Generate Verification Pin",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{happyToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"phone_number\": {{infobip_phoneNumber}}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{infobip}}/v1/generate-phone-verification-pin",
+					"host": [
+						"{{infobip}}"
+					],
+					"path": [
+						"v1",
+						"generate-phone-verification-pin"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success Generate Verification Pin",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"phone_number\": {{infobip_phoneNumber}}\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{infobip}}/v1/generate-phone-verification-pin",
+							"host": [
+								"{{infobip}}"
+							],
+							"path": [
+								"v1",
+								"generate-phone-verification-pin"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"status\": 200,\n    \"message\": \"Pin sent to registered phone number\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Verify Phone Number",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{happyToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"pinCode\": \"1184\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{infobip}}/v1/verify-phone",
+					"host": [
+						"{{infobip}}"
+					],
+					"path": [
+						"v1",
+						"verify-phone"
+					]
+				},
+				"description": "View registered user"
+			},
+			"response": [
+				{
+					"name": "Success Verify Phone Number",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"pinCode\": \"1184\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{infobip}}/v1/verify-phone",
+							"host": [
+								"{{infobip}}"
+							],
+							"path": [
+								"v1",
+								"verify-phone"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"status\": 200,\n    \"message\": \"Phone number verified\"\n}"
+				}
+			]
+		},
+		{
 			"name": "Create Tournament",
 			"request": {
 				"auth": {
@@ -441,7 +437,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\" : \"tournament 2\",\n    \"point\" : 5\n}",
+					"raw": "{\n    \"name\" : \"tournament 1\",\n    \"point\" : 5\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -449,9 +445,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{happysocks}}/v1/create-tournament",
+					"raw": "{{infobip}}/v1/create-tournament",
 					"host": [
-						"{{happysocks}}"
+						"{{infobip}}"
 					],
 					"path": [
 						"v1",
@@ -475,9 +471,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{happysocks}}/v1/create-tournament",
+							"raw": "{{infobip}}/v1/create-tournament",
 							"host": [
-								"{{happysocks}}"
+								"{{infobip}}"
 							],
 							"path": [
 								"v1",
@@ -560,7 +556,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"first_player_score\" : 1,\n    \"second_player_score\" : 2,\n    \"status\": \"Draw\",\n    \"second_player_id\" : 3\n}",
+					"raw": "{   \n    \"first_player_score\" : 5,\n    \"second_player_score\" : 2,\n    \"status\": \"Draw\",\n    \"second_player_id\" : 3\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -568,9 +564,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{happysocks}}/v1/submit-result?tournament_id=1",
+					"raw": "{{infobip}}/v1/submit-result?tournament_id=1",
 					"host": [
-						"{{happysocks}}"
+						"{{infobip}}"
 					],
 					"path": [
 						"v1",
@@ -600,9 +596,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{happysocks}}/v1/submit-result?tournament_id=1",
+							"raw": "{{infobip}}/v1/submit-result?tournament_id=1",
 							"host": [
-								"{{happysocks}}"
+								"{{infobip}}"
 							],
 							"path": [
 								"v1",
@@ -675,137 +671,6 @@
 			]
 		},
 		{
-			"name": "Update result",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{happyToken}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "PATCH",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"first_player_score\" : 1,\n    \"second_player_score\" : 2,\n    \"status\": \"lose\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{happysocks}}/v1/update-result?match_id=1",
-					"host": [
-						"{{happysocks}}"
-					],
-					"path": [
-						"v1",
-						"update-result"
-					],
-					"query": [
-						{
-							"key": "match_id",
-							"value": "1"
-						}
-					]
-				}
-			},
-			"response": [
-				{
-					"name": "Update result success",
-					"originalRequest": {
-						"method": "PATCH",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"first_player_score\" : 1,\n    \"second_player_score\" : 2,\n    \"status\": \"lose\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{happysocks}}/v1/update-result?match_id=1",
-							"host": [
-								"{{happysocks}}"
-							],
-							"path": [
-								"v1",
-								"update-result"
-							],
-							"query": [
-								{
-									"key": "match_id",
-									"value": "1"
-								}
-							]
-						}
-					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "Date",
-							"value": "Thu, 01 Jul 2021 22:35:58 GMT"
-						},
-						{
-							"key": "Server",
-							"value": "Apache/2.4.46 (Unix) OpenSSL/1.1.1g PHP/7.3.21 mod_perl/2.0.11 Perl/v5.32.0"
-						},
-						{
-							"key": "Vary",
-							"value": "Authorization"
-						},
-						{
-							"key": "X-Powered-By",
-							"value": "PHP/7.3.21"
-						},
-						{
-							"key": "Cache-Control",
-							"value": "no-cache, private"
-						},
-						{
-							"key": "X-RateLimit-Limit",
-							"value": "60"
-						},
-						{
-							"key": "X-RateLimit-Remaining",
-							"value": "59"
-						},
-						{
-							"key": "Access-Control-Allow-Origin",
-							"value": "*"
-						},
-						{
-							"key": "Content-Length",
-							"value": "53"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=5, max=100"
-						},
-						{
-							"key": "Connection",
-							"value": "Keep-Alive"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json"
-						}
-					],
-					"cookie": [],
-					"body": "{\n    \"status\": 200,\n    \"data\": true,\n    \"message\": \"Result Updated\"\n}"
-				}
-			]
-		},
-		{
 			"name": "Invite Friend",
 			"request": {
 				"auth": {
@@ -822,7 +687,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "",
+					"raw": "{\n    \"username\" : \"larry\",\n    \"tournament_id\" : 1\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -830,9 +695,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{happysocks}}/v1/invite-friend?username=isaac&id=1",
+					"raw": "{{infobip}}/v1/invite-friend",
 					"host": [
-						"{{happysocks}}"
+						"{{infobip}}"
 					],
 					"path": [
 						"v1",
@@ -841,11 +706,13 @@
 					"query": [
 						{
 							"key": "username",
-							"value": "isaac"
+							"value": "isaacss",
+							"disabled": true
 						},
 						{
 							"key": "id",
-							"value": "1"
+							"value": "1",
+							"disabled": true
 						}
 					]
 				}
@@ -858,7 +725,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "",
+							"raw": "{\n    \"username\" : \"larry\",\n    \"tournament_id\" : 1\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -866,9 +733,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{happysocks}}/v1/invite-friend?username=damola&id=1",
+							"raw": "{{infobip}}/v1/invite-friend",
 							"host": [
-								"{{happysocks}}"
+								"{{infobip}}"
 							],
 							"path": [
 								"v1",
@@ -877,11 +744,13 @@
 							"query": [
 								{
 									"key": "username",
-									"value": "damola"
+									"value": "damola",
+									"disabled": true
 								},
 								{
 									"key": "id",
-									"value": "1"
+									"value": "1",
+									"disabled": true
 								}
 							]
 						}
@@ -943,41 +812,6 @@
 					"body": "{\n    \"status\": 200,\n    \"message\": \"Invitation sent\"\n}"
 				}
 			]
-		},
-		{
-			"name": "show leaderboard",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{happyToken}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "{{happysocks}}/v1/show-leaderboard",
-					"host": [
-						"{{happysocks}}"
-					],
-					"path": [
-						"v1",
-						"show-leaderboard"
-					]
-				}
-			},
-			"response": []
 		}
 	]
 }
