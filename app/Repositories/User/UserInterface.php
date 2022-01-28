@@ -8,11 +8,11 @@ interface UserInterface
 
     public function login(array $request);
 
-    public function viewUser(int $id);
+    public function generateVerificationPin(string $phoneNumber, string $id);
+
+    public function verifySecuredAuthenticationPin(string $pinId, string $pinCode);
 
     public function getAuthenticatedUser();
-
-    public function deactivateUser(int $id);
 
     public function resetPassword(array $request);
 }

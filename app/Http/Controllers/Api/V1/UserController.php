@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers\Api\V1;
 
-use App\Models\User;
 use App\Facade\AppUtils;
 use Illuminate\Http\Request;
 use App\Enums\StatusCodeEnum;
-use Tymon\JWTAuth\Facades\JWTAuth;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
 use App\Repositories\User\UserRepository;
 
 
@@ -46,7 +43,7 @@ class UserController extends Controller
 
         AppUtils::validation($request->all(), $requestBody);
 
-        $user = $this->user->register($request->all());
+        $user = $this->user->register(array_merge($request->all(), ['token' => $request->header('token')]));
 
         return AppUtils::setResponse(StatusCodeEnum::CREATED,  $user, "User created");
         
@@ -66,29 +63,27 @@ class UserController extends Controller
         return AppUtils::setResponse(StatusCodeEnum::OK, null, "Password Reset Successfully");
     }
 
-    public function deactivate (Request $request)
-    {
-        $this->validateUserId($request);
-
-        $user = $this->user->deactivateUser($request->id);
-
-        return AppUtils::setResponse(StatusCodeEnum::OK, null, "User deactivated");
-    }
-
-    public function view(Request $request)
-    {
-        $this->validateUserId($request);
-
-        $user = $this->user->viewUser($request->id);
-
-        return AppUtils::setResponse(StatusCodeEnum::OK, $user, "Success");
-    }
-
-    private function validateUserId ($request)
+    public function generatePhoneVerificationPin(Request $request)
     {
         $requestBody = [
-            'id' => ['required'],
+            'phone_number' => 'required|unique:users',
         ];
-        return AppUtils::validation($request->all(), $requestBody);
+
+        AppUtils::validation($request->all(), $requestBody);
+
+        $user = $this->user->generateVerificationPin($request->phone_number, $this->user->getAuthenticatedUser()['id']);
+
+        return AppUtils::setResponse(StatusCodeEnum::OK, null, "Pin sent to registered phone number");
+    }
+
+    public function verifyPhoneNumber(Request $request)
+    {
+        $requestBody = [
+            'pinCode' => 'required|string'
+        ];
+
+        AppUtils::validation($request->all(), $requestBody);
+        $user = $this->user->verifySecuredAuthenticationPin($this->user->getAuthenticatedUser()['pin_id'],  $request->pinCode);
+        return AppUtils::setResponse(StatusCodeEnum::OK, null, "Phone number verified");
     }
 }

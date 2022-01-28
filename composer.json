@@ -12,7 +12,8 @@
         "laravel/framework": "^8.40",
         "laravel/tinker": "^2.5",
         "spatie/laravel-permission": "^4.2",
-        "tymon/jwt-auth": "^1.0"
+        "tymon/jwt-auth": "^1.0",
+        "infobip/infobip-api-php-client": "3.1.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

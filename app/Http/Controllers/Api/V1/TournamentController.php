@@ -2,17 +2,12 @@
 
 namespace App\Http\Controllers\Api\V1;
 
-use App\Models\User;
 use App\Facade\AppUtils;
-use App\Models\Tournament;
 use Illuminate\Http\Request;
 use App\Enums\StatusCodeEnum;
-use Tymon\JWTAuth\Facades\JWTAuth;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
 use App\Repositories\User\UserRepository;
 use App\Repositories\Tournament\TournamentRepository;
-
 
 
 class TournamentController extends Controller
@@ -46,7 +41,7 @@ class TournamentController extends Controller
     {
         $requestBody = [
             'username' => 'required|string|exists:users,username',
-            'id' => 'required|string|exists:tournaments,id'
+            'tournament_id' => 'required|integer|exists:tournaments,id'
         ];
 
         AppUtils::validation($request->all(), $requestBody);
@@ -75,31 +70,5 @@ class TournamentController extends Controller
         $result = $this->tournament->submitResult($request->all());
 
         return AppUtils::setResponse(StatusCodeEnum::OK, $result, "Result submitted");
-    }
-
-    public function updateLeaderBoard(Request $request)
-    {
-        $requestBody = [
-            'match_id' => 'required|integer|exists:matches,id',
-            'first_player_score' => 'required|integer',
-            'second_player_score' => 'required|integer',
-            'status' => 'required|string'
-        ];
-
-        AppUtils::validation($request->all(), $requestBody);
-
-        $request['current_user'] = $this->user->getAuthenticatedUser()['id'];
-
-
-        $result = $this->tournament->updateResult($request->all());
-
-        return AppUtils::setResponse(StatusCodeEnum::OK, $result, "Result updated");
-    }
-
-    public function showLeaderBoard ()
-    {
-        $leaderBoard = $this->tournament->viewLeaderBoard();
-
-        return AppUtils::setResponse(StatusCodeEnum::OK, $leaderBoard, "Success");
     }
 }
