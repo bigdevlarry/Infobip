@@ -3,9 +3,9 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use JWTAuth;
 use Exception;
 use App\Enums\StatusCodeEnum;
+use Tymon\JWTAuth\Facades\JWTAuth;
 use App\Exceptions\CustomException;
 use Tymon\JWTAuth\Http\Middleware\BaseMiddleware;
 

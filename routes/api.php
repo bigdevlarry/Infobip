@@ -15,26 +15,21 @@ use App\Http\Controllers\Api\V1\TournamentController;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
-
 Route::group(['middleware' => ['api'], 'namespace' => 'Api\V1', 'prefix' => '/v1'], function (){
     Route::post('login', [UserController::class, 'login']);
     Route::post('register', [UserController::class, 'register']);
     Route::post('reset-password', [UserController::class, 'resetPassword']);
-
+    
     //route group for auth users
     Route::group(['middleware' => ['jwt.verify']], function() {
-        Route::get('view-user', [UserController::class, 'view']);
-        Route::post('deactivate-user', [UserController::class, 'deactivate']);
-
-        Route::post('create-tournament', [TournamentController::class, 'create']);
-        Route::post('invite-friend', [TournamentController::class, 'sendInvite']);
-        Route::post('submit-result', [TournamentController::class, 'submitResult']);
-        Route::get('show-leaderboard', [TournamentController::class, 'showLeaderBoard']);
-        Route::patch('update-result', [TournamentController::class, 'updateLeaderBoard']);
+        Route::post('generate-phone-verification-pin', [UserController::class, 'generatePhoneVerificationPin']);
+        Route::post('verify-phone', [UserController::class, 'verifyPhoneNumber']);
+        
+        Route::group(['middleware' => 'phone.verify'], function (){
+            Route::post('create-tournament', [TournamentController::class, 'create']);
+            Route::post('invite-friend', [TournamentController::class, 'sendInvite']);
+            Route::post('submit-result', [TournamentController::class, 'submitResult']);
+        });
     });
     
 });

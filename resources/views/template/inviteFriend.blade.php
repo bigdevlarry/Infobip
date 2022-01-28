@@ -635,13 +635,13 @@
                                                         padding-bottom: 0px
                                                         ">
 
-                                                        <p>{{$greeting}} , </p>
+                                                        <p>{{$greeting}} , </p> <br>
 
 
-                                                        <p>{{$message}}</p>
+                                                        <p>{{$message}}</p> <br>
 
                                                         <p>	
-                                                        	Cheers, <br> HappySocks
+                                                        	Cheers, <br> <br>Infobip
                                                         </p>
 
                                                     </div>
@@ -651,38 +651,7 @@
                                     </table> 
                                 </td>
                             </tr>
-                            
-                            <tr>
-                                <td valign="top" id="templateFooter">
-                                    <table class="mcnImageBlock" style="min-width:100%;" width="100%" cellspacing="0" cellpadding="0" border="0">
-                                        <tbody class="mcnImageBlockOuter">
-                                            <tr>
-                                                <td style="padding:9px" class="mcnImageBlockInner" valign="top">
-                                                    <table class="mcnImageContentContainer" style="min-width:100%;" width="100%" cellspacing="0" cellpadding="0" border="0" align="left">
-                                                        <tbody>
-                                                            <tr>
-                                                                <td class="mcnImageContent" style="padding-right: 9px; padding-left: 9px; padding-top: 0; padding-bottom: 0; text-align:center;" valign="top">
-                                                                    
-                                                                	<a href="#" title="" class="" target="_blank">
-                                                                    <img alt="" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNmNoHYVwUidk-7qDoi9IX887tsizpdTcS9w&usqp=CAU" style="max-width:400px; padding-bottom: 0; display: inline !important; vertical-align: bottom;" class="mcnImage" width="128" align="middle">
-                                                                	</a>
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </td>
-                            </tr>
                         </table>
-                        <!--[if (gte mso 9)|(IE)]>
-                        </td>
-                        </tr>
-                        </table>
-                        <![endif]-->
-                        <!-- // END TEMPLATE -->
                     </td>
                 </tr>
             </table>
