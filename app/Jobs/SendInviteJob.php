@@ -49,7 +49,8 @@ class SendInviteJob implements ShouldQueue
             'Authorization' => env('API_KEY_PREFIX'). " ". env('API_KEY'),
             'Content-Type' =>  'application/json',
             'Accept' => 'application/json'
-        ])->post(env('URL_BASE_PATH'). '/sms/2/text/advanced', ['messages' => $payload] );
+        ])->post(env('URL_BASE_PATH'). '/sms/2/text/advanced', ['messages' => $payload]);
+        
         Mail::to($this->user->email)->send(new InviteFriendMail($this->user, $this->tournament));
     }
 }

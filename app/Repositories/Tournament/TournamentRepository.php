@@ -43,7 +43,8 @@ class TournamentRepository implements TournamentInterface
     public function submitResult (array $request)
     {   
         $tournament = $this->tournament->find($request['tournament_id']);
-       
+
+        info($request['current_user']);
         if(!$tournament_creator = $tournament->creator == $request['current_user']){
             throw new CustomException(StatusCodeEnum::BAD_REQUEST, null, 'Only tournament creators can submit a result');
         }

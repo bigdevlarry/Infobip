@@ -19,10 +19,7 @@ use Tymon\JWTAuth\Exceptions\TokenInvalidException;
 
 class UserRepository implements UserInterface
 {
-    protected $user;
-    protected $infobip_service;
-    protected $client;
-    protected $faApi;
+    protected $user, $infobip_service , $client, $faApi;
 
     public function __construct(User $user)
     {

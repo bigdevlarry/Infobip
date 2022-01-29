@@ -73,7 +73,7 @@ class UserController extends Controller
 
         $user = $this->user->generateVerificationPin($request->phone_number, $this->user->getAuthenticatedUser()['id']);
 
-        return AppUtils::setResponse(StatusCodeEnum::OK, null, "Pin sent to registered phone number");
+        return AppUtils::setResponse(StatusCodeEnum::CREATED, null, "Pin sent to registered phone number");
     }
 
     public function verifyPhoneNumber(Request $request)
