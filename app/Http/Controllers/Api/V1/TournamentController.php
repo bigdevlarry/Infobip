@@ -33,7 +33,7 @@ class TournamentController extends Controller
 
         $tournament = $this->tournament->createTournament($request->all());
 
-        return AppUtils::setResponse(StatusCodeEnum::OK, $tournament, "Tournament created");
+        return AppUtils::setResponse(StatusCodeEnum::CREATED, $tournament, "Tournament created");
     }
 
 
