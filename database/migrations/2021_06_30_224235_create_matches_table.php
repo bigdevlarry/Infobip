@@ -15,8 +15,7 @@ class CreateMatchesTable extends Migration
     {
         Schema::create('matches', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('tournament_id')->unsigned();
-            $table->foreign('tournament_id')->references('id')->on('tournaments')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('tournament_id')->nullable()->constrained()->cascadeOnDelete();
             $table->integer('first_player_score');
             $table->integer('second_player_score');
             $table->enum('status', ['win', 'lose', 'draw']);
