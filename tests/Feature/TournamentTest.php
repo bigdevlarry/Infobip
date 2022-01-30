@@ -7,8 +7,6 @@ use Tests\TestCase;
 use App\Models\User;
 use App\Models\Tournament;
 use App\Enums\StatusCodeEnum;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class TournamentTest extends TestCase
 {
@@ -17,8 +15,7 @@ class TournamentTest extends TestCase
         $payload = [
             "phone_number" => env('SIGNUP_PHONE_NUMBER')
         ];
-
-        $response = $this->payload_response(route('generate-pin'), $payload, StatusCodeEnum::CREATED);
+       $this->payload_response(route('generate-pin'), $payload, StatusCodeEnum::CREATED);
     }
 
     public function test_create_tournament()
@@ -36,8 +33,7 @@ class TournamentTest extends TestCase
             "username" => User::latest()->first()->username,
             "tournament_id" => Tournament::latest()->first()->id,
         ];
-
-        $response = $this->payload_response(route('invite-friend'), $payload, StatusCodeEnum::OK);
+        $this->payload_response(route('invite-friend'), $payload, StatusCodeEnum::OK);
     }
 
     private function generate_token() :string
@@ -51,7 +47,6 @@ class TournamentTest extends TestCase
         $response = $this->withHeaders([
             'Authorization' =>   'Bearer ' . $this->generate_token(),
         ])->postJson($route, $payload);   
-
         return  $response->assertStatus($status_code);
     }
 }
