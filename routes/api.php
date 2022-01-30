@@ -22,13 +22,13 @@ Route::group(['middleware' => ['api'], 'namespace' => 'Api\V1', 'prefix' => '/v1
     
     //route group for auth users
     Route::group(['middleware' => ['jwt.verify']], function() {
-        Route::post('generate-phone-verification-pin', [UserController::class, 'generatePhoneVerificationPin']);
-        Route::post('verify-phone', [UserController::class, 'verifyPhoneNumber']);
+        Route::post('generate-phone-verification-pin', [UserController::class, 'generatePhoneVerificationPin'])->name('generate-pin');
+        Route::post('verify-phone', [UserController::class, 'verifyPhoneNumber'])->name('verify-pin');
         
         Route::group(['middleware' => 'phone.verify'], function (){
-            Route::post('create-tournament', [TournamentController::class, 'create']);
-            Route::post('invite-friend', [TournamentController::class, 'sendInvite']);
-            Route::post('submit-result', [TournamentController::class, 'submitResult']);
+            Route::post('create-tournament', [TournamentController::class, 'create'])->name('create-tournament');
+            Route::post('invite-friend', [TournamentController::class, 'sendInvite'])->name('invite-friend');
+            Route::post('submit-result', [TournamentController::class, 'submitResult'])->name('submit-result');
         });
     });
     

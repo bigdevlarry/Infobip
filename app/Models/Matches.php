@@ -16,7 +16,6 @@ class Matches extends Model
 
     protected $guarded = ['id'];
 
-
     public function tournament()
     {
         return $this->belongsTo(Tournament::class);
