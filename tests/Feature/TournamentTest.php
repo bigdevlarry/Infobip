@@ -12,6 +12,8 @@ class TournamentTest extends TestCase
 {
     public function test_generate_pin()
     {
+        $this->withoutExceptionHandling();
+
         $payload = [
             "phone_number" => env('SIGNUP_PHONE_NUMBER')
         ];
@@ -20,6 +22,8 @@ class TournamentTest extends TestCase
 
     public function test_create_tournament()
     {
+        $this->withoutExceptionHandling();
+
         $payload = [
             "name" => "tournament-" . rand(10, 10000),
             "point" => 5
@@ -29,6 +33,8 @@ class TournamentTest extends TestCase
 
     public function test_invite_friend()
     {
+        $this->withoutExceptionHandling();
+        
         $payload = [
             "username" => User::latest()->first()->username,
             "tournament_id" => Tournament::latest()->first()->id,
