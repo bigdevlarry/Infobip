@@ -11,9 +11,9 @@ To execute this, you need to have the followings done on your local machine
 
 2. Clone this repository
 
-3. Run composer install to pull the required dependencies. 
+3. Run `composer install` to pull the required dependencies. 
 
-4. Proceed to create an environment variable file from the .env.example where you establish a database connection also add Infobip integration variables to the .env file 
+4. Proceed to create an environment variable file from the .env.example where you establish a database connection also add Infobip integration variables to the .env file. <br>
     i .     **API_KEY**=6c****-0f444b16-1c97-4577
     
     ii.     **URL_BASE_PATH**=https://***.api.infobip.com
