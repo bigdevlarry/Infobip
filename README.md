@@ -7,10 +7,23 @@ The application is an API based laravel application; it integrates Infobip API f
 
 To execute this, you need to have the followings done on your local machine
 
-1. Composer installed
+1. Install Composer
+
 2. Clone this repository
+
 3. Run composer install to pull the required dependencies. 
-4. Proceed to create an environment variable file from the .env.example where you establish a database connection, add Infobip integration variables to the .env file (**API_KEY**=6c****-0f444b16-1c97-4577, **URL_BASE_PATH**=https://***.api.infobip.com, **API_KEY_PREFIX**=App, **FROM**=SeriviceSMS, **SIGNUP_PHONE_NUMBER**=*********).
+
+4. Proceed to create an environment variable file from the .env.example where you establish a database connection also add Infobip integration variables to the .env file 
+    i .     **API_KEY**=6c****-0f444b16-1c97-4577
+    
+    ii.     **URL_BASE_PATH**=https://***.api.infobip.com
+    
+    iii.    **API_KEY_PREFIX**=App
+    
+    iv.     **FROM**=SeriviceSMS
+    
+    v.      **SIGNUP_PHONE_NUMBER**=*********
+    
 5. Migrate all database tables with `php artisan migrate` command in the terminal. 
 
 ## Where do I find Endpoints?
